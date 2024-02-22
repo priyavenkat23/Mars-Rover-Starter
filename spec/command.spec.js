@@ -8,5 +8,13 @@ describe("Command class", function() {
   it("throws error if command type is NOT passed into constructor as the first parameter", function() {
     expect( function() { new Command();}).toThrow(new Error('Command type required.'));
   });
+  it("constructor sets command type", function() {
+    let modeCommand = new Command("MODE_CHANGE","LOW_POWER");
+    expect(modeCommand.commandType).toBe("MODE_CHANGE");
+  });
+  it("constructor sets a value passed in as the 2nd argument", function() {
+    let moveCommand = new Command('MOVE', 12000);
+    expect(moveCommand.value).toBe(12000);
+  });
 
 });
